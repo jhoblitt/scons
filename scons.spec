@@ -1,15 +1,14 @@
 Name:           scons
 Version:        0.96
-Release:        0.fdr.1.2
-Epoch:          0
+Release:        3
 Summary:        An Open Source software construction tool
 
 Group:          Development/Tools
 License:        MIT
 URL:            http://www.scons.org/
-Source:         http://download.sourceforge.net/scons/scons-0.96.tar.gz
+Source:         http://download.sourceforge.net/scons/scons-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildArchitectures: noarch
+BuildArch:       noarch
 BuildRequires:  python-devel
 
 %description
@@ -51,6 +50,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man*/*
 
 %changelog
+* Wed Nov 10 2004 Matthias Saou <http://freshrpms.net/> 0.96-3
+- Bump release to provide Extras upgrade path.
+
 * Thu Aug 19 2004 Gerard Milmeister <gemi@bluewin.ch> - 0:0.96-0.fdr.1
 - New Version 0.96
 
@@ -59,3 +61,4 @@ rm -rf $RPM_BUILD_ROOT
 
 * Fri Nov  7 2003 Gerard Milmeister <gemi@bluewin.ch> - 0:0.93-0.fdr.1
 - First Fedora release
+
