@@ -1,6 +1,6 @@
 Name:           scons
 Version:        0.96
-Release:        0.fdr.1.1
+Release:        0.fdr.1.2
 Epoch:          0
 Summary:        An Open Source software construction tool
 
