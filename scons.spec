@@ -1,6 +1,7 @@
 Name:           scons
 Version:        0.96
-Release:        4
+Release:        5
+
 Summary:        An Open Source software construction tool
 
 Group:          Development/Tools
@@ -51,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man*/*
 
 %changelog
+* Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
+- rebuilt
+
 * Tue Jan 25 2005 Thorsten Leemhuis <fedora[AT]leemhuis[DOT]info> 0.96-4
 - Place libs in {_prefix}/lib/ and not in {libdir}; fixes x86_64 problems
 - Adjust minor bits to be in sync with python-spec-template
