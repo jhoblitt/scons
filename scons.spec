@@ -1,6 +1,6 @@
 Name:           scons
 Version:        0.96
-Release:        5
+Release:        6%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man*/*
 
 %changelog
+* Fri Feb 17 2006 Gerard Milmeister <gemi@bluewin.ch> - 0.96-6
+- Rebuild for Fedora Extras 5
+
 * Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
 - rebuilt
 
