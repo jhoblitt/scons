@@ -1,6 +1,6 @@
 Name:           scons
 Version:        0.96.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man*/*
 
 %changelog
+* Mon Aug 28 2006 Gerard Milmeister <gemi@bluewin.ch> - 0.96.1-3
+- Rebuild for FE6
+
 * Sat Jun 18 2005 Gerard Milmeister <gemi@bluewin.ch> - 0.96.1-1
 - New Version 0.96.1
 
