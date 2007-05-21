@@ -1,12 +1,12 @@
 Name:           scons
-Version:        0.96.1
-Release:        3%{?dist}
+Version:        0.97
+Release:        1%{?dist}
 
 Summary:        An Open Source software construction tool
 
 Group:          Development/Tools
 License:        MIT
-URL:            http://www.scons.org/
+URL:            http://www.scons.org
 Source:         http://download.sourceforge.net/scons/scons-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
@@ -28,6 +28,7 @@ really changed, not just when the timestamp has been touched.  SCons
 supports side-by-side variant builds, and is easily extended with user-
 defined Builder and/or Scanner objects.
 
+
 %prep
 %setup -q
 
@@ -35,14 +36,18 @@ defined Builder and/or Scanner objects.
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
+
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES --install-lib=%{_prefix}/lib/scons --install-scripts=%{_bindir}
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
-cp -f scons.1 sconsign.1 $RPM_BUILD_ROOT%{_mandir}/man1
+mkdir -p $RPM_BUILD_ROOT%{_mandir}
+#cp -f scons.1 sconsign.1 $RPM_BUILD_ROOT%{_mandir}/man1
+mv $RPM_BUILD_ROOT%{_prefix}/man/* $RPM_BUILD_ROOT%{_mandir}
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
 
 %files
 %defattr(-,root,root,-)
@@ -51,7 +56,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/scons
 %{_mandir}/man*/*
 
+
 %changelog
+* Mon May 21 2007 Gerard Milmeister <gemi@bluewin.ch> - 0.97-1
+- new version 0.97
+
+* Thu May 10 2007 Gerard Milmeister <gemi@bluewin.ch> - 0.96.96-1
+- new version 0.96.96
+
 * Mon Aug 28 2006 Gerard Milmeister <gemi@bluewin.ch> - 0.96.1-3
 - Rebuild for FE6
 
