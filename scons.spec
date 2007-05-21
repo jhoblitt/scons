@@ -1,6 +1,6 @@
 Name:           scons
 Version:        0.97
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        An Open Source software construction tool
 
