@@ -1,5 +1,5 @@
 Name:           scons
-Version:        0.97
+Version:        0.98.1
 Release:        1%{?dist}
 
 Summary:        An Open Source software construction tool
@@ -11,7 +11,6 @@ Source:         http://download.sourceforge.net/scons/scons-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel
-Requires:   	python-abi = %(%{__python} -c "import sys ; print sys.version[:3]")
 
 %description
 SCons is an Open Source software construction tool--that is, a build
@@ -58,6 +57,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Apr 19 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.1-1
+- new release 0.98.1
+
+* Sat Apr  5 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98-1
+- new release 0.98
+
 * Mon May 21 2007 Gerard Milmeister <gemi@bluewin.ch> - 0.97-1
 - new version 0.97
 
