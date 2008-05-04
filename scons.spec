@@ -1,6 +1,6 @@
 Name:           scons
 Version:        0.98.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -11,7 +11,6 @@ Source:         http://download.sourceforge.net/scons/scons-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel
-Requires:       python-abi = %(%{__python} -c "import sys ; print sys.version[:3]")
 
 
 %description
@@ -32,10 +31,12 @@ defined Builder and/or Scanner objects.
 
 %prep
 %setup -q
+sed -i 's|/usr/bin/env python|/usr/bin/python|' script/*
 
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
+
 
 
 %install
@@ -58,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun May  4 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.3-2
+- changed shebang line of scripts
+
 * Sun May  4 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.3-1
 - new release 0.98.3
 
@@ -97,5 +101,3 @@ rm -rf $RPM_BUILD_ROOT
 
 * Fri Nov  7 2003 Gerard Milmeister <gemi@bluewin.ch> - 0:0.93-0.fdr.1
 - First Fedora release
-
-
