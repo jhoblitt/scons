@@ -1,6 +1,6 @@
 Name:           scons
-Version:        0.98.1
-Release:        1%{?dist}
+Version:        0.98.4
+Release:        2%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -11,6 +11,8 @@ Source:         http://download.sourceforge.net/scons/scons-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel
+BuildRequires:  sed
+
 
 %description
 SCons is an Open Source software construction tool--that is, a build
@@ -30,6 +32,7 @@ defined Builder and/or Scanner objects.
 
 %prep
 %setup -q
+sed -i 's|/usr/bin/env python|/usr/bin/python|' script/*
 
 
 %build
@@ -40,7 +43,6 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES --install-lib=%{_prefix}/lib/scons --install-scripts=%{_bindir}
 mkdir -p $RPM_BUILD_ROOT%{_mandir}
-#cp -f scons.1 sconsign.1 $RPM_BUILD_ROOT%{_mandir}/man1
 mv $RPM_BUILD_ROOT%{_prefix}/man/* $RPM_BUILD_ROOT%{_mandir}
 
 
@@ -57,6 +59,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jun  1 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.4-2
+- added buildreq sed
+
+* Sat May 31 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.4-1
+- new release 0.98.4
+
 * Sat Apr 19 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.1-1
 - new release 0.98.1
 
