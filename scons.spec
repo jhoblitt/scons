@@ -1,6 +1,6 @@
 Name:           scons
-Version:        0.98.3
-Release:        2%{?dist}
+Version:        0.98.4
+Release:        1%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -59,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat May 31 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.4-1
+- new release 0.98.4
+
 * Sun May  4 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.3-2
 - changed shebang line of scripts
 
