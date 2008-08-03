@@ -1,13 +1,13 @@
 Name:           scons
-Version:        0.98.4
-Release:        2%{?dist}
+Version:        0.98.5
+Release:        1%{?dist}
 
 Summary:        An Open Source software construction tool
 
 Group:          Development/Tools
 License:        MIT
 URL:            http://www.scons.org
-Source:         http://download.sourceforge.net/scons/scons-%{version}.tar.gz
+Source:         http://prdownloads.sourceforge.net/scons/scons-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Aug  3 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.5-1
+- new release 0.98.5
+
 * Sun Jun  1 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.4-2
 - added buildreq sed
 
