@@ -1,6 +1,6 @@
 Name:           scons
 Version:        1.0.0
-Release:        1.d20080826%{?dist}
+Release:        2.d20080826%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Dec 01 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 1.0.0-2.d20080826
+- Rebuild for Python 2.6
+
 * Fri Sep  5 2008 Gerard Milmeister <gemi@bluewin.ch> - 1.0.0-1.d20080826
 - new release 1.0.0
 
