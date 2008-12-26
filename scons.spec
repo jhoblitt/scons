@@ -1,6 +1,6 @@
 Name:           scons
-Version:        1.1.0
-Release:        2%{?dist}
+Version:        1.2.0
+Release:        1%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -60,6 +60,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Dec 25 2008 Alex Lancaster <alexlan[AT]fedoraproject org> - 1.2.0-1
+- Update to 1.2.0 to fix problems with Python 2.6 (#475903)
+  (currently causing broken deps with other packages)
+
 * Thu Dec 18 2008 Gerard Milmeister <gemi@bluewin.ch> - 1.1.0-1
 - new release 1.1.0
 
