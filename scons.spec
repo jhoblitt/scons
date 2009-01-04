@@ -1,5 +1,5 @@
 Name:           scons
-Version:        0.98.1
+Version:        0.98.4
 Release:        1%{?dist}
 
 Summary:        An Open Source software construction tool
@@ -57,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jan  4 2009 Jochen Schmitt <Jochen herr-schmitt de> - 0.98.4-1
+- Update to 0.98.4 to fix BZ #475664
+
 * Sat Apr 19 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.1-1
 - new release 0.98.1
 
