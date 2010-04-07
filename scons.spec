@@ -1,16 +1,18 @@
 Name:           scons
-Version:        0.98.4
-Release:        1%{?dist}
+Version:        1.2.0
+Release:        3%{?dist}
 
 Summary:        An Open Source software construction tool
 
 Group:          Development/Tools
 License:        MIT
 URL:            http://www.scons.org
-Source:         http://download.sourceforge.net/scons/scons-%{version}.tar.gz
+Source:         http://prdownloads.sourceforge.net/scons/scons-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel
+BuildRequires:  sed
+
 
 %description
 SCons is an Open Source software construction tool--that is, a build
@@ -30,17 +32,18 @@ defined Builder and/or Scanner objects.
 
 %prep
 %setup -q
+sed -i 's|/usr/bin/env python|/usr/bin/python|' script/*
 
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 
+
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES --install-lib=%{_prefix}/lib/scons --install-scripts=%{_bindir}
 mkdir -p $RPM_BUILD_ROOT%{_mandir}
-#cp -f scons.1 sconsign.1 $RPM_BUILD_ROOT%{_mandir}/man1
 mv $RPM_BUILD_ROOT%{_prefix}/man/* $RPM_BUILD_ROOT%{_mandir}
 
 
@@ -57,8 +60,36 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Sun Jan  4 2009 Jochen Schmitt <Jochen herr-schmitt de> - 0.98.4-1
-- Update to 0.98.4 to fix BZ #475664
+* Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+* Thu Dec 25 2008 Alex Lancaster <alexlan[AT]fedoraproject org> - 1.2.0-1
+- Update to 1.2.0 to fix problems with Python 2.6 (#475903)
+  (currently causing broken deps with other packages)
+
+* Thu Dec 18 2008 Gerard Milmeister <gemi@bluewin.ch> - 1.1.0-1
+- new release 1.1.0
+
+* Fri Sep  5 2008 Gerard Milmeister <gemi@bluewin.ch> - 1.0.0-1.d20080826
+- new release 1.0.0
+
+* Sun Aug  3 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.5-1
+- new release 0.98.5
+
+* Sun Jun  1 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.4-2
+- added buildreq sed
+
+* Sat May 31 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.4-1
+- new release 0.98.4
+
+* Sun May  4 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.3-2
+- changed shebang line of scripts
+
+* Sun May  4 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.3-1
+- new release 0.98.3
 
 * Sat Apr 19 2008 Gerard Milmeister <gemi@bluewin.ch> - 0.98.1-1
 - new release 0.98.1
@@ -96,5 +127,3 @@ rm -rf $RPM_BUILD_ROOT
 
 * Fri Nov  7 2003 Gerard Milmeister <gemi@bluewin.ch> - 0:0.93-0.fdr.1
 - First Fedora release
-
-
