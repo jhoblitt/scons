@@ -1,6 +1,6 @@
 Name:           scons
-Version:        1.2.0
-Release:        3%{?dist}
+Version:        1.3.0
+Release:        1%{?dist}
 
 Summary:        An Open Source software construction tool
 
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun May 23 2010 Jochen Schmitt <Jochen herr-schmitt de> - 1.3.0-1
+- New upstream release
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
