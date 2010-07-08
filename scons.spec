@@ -1,18 +1,16 @@
-Name:           scons
-Version:        1.2.0
-Release:        3%{?dist}
+%global posttag .final.0
 
-Summary:        An Open Source software construction tool
-
-Group:          Development/Tools
-License:        MIT
-URL:            http://www.scons.org
-Source:         http://prdownloads.sourceforge.net/scons/scons-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildArch:      noarch
-BuildRequires:  python-devel
-BuildRequires:  sed
-
+Name:		scons
+Version:	2.0.0
+Release:	1%{?posttag}%{?dist}
+Summary:	An Open Source software construction tool
+Group:		Development/Tools
+License:	MIT
+URL:		http://www.scons.org
+Source:		http://downloads.sourceforge.net/scons/scons-%{version}%{?posttag}.tar.gz
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildArch:	noarch
+BuildRequires:	python2-devel
 
 %description
 SCons is an Open Source software construction tool--that is, a build
@@ -29,37 +27,38 @@ really changed, not just when the timestamp has been touched.  SCons
 supports side-by-side variant builds, and is easily extended with user-
 defined Builder and/or Scanner objects.
 
-
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{?posttag}
 sed -i 's|/usr/bin/env python|/usr/bin/python|' script/*
-
+# Convert to utf-8
+for file in *.txt; do
+    iconv -f ISO-8859-1 -t UTF-8 -o $file.new $file && \
+    touch -r $file $file.new && \
+    mv $file.new $file
+done
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
-
-
+python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES --install-lib=%{_prefix}/lib/scons --install-scripts=%{_bindir}
-mkdir -p $RPM_BUILD_ROOT%{_mandir}
-mv $RPM_BUILD_ROOT%{_prefix}/man/* $RPM_BUILD_ROOT%{_mandir}
-
-
+python setup.py install -O1 --skip-build --root=$RPM_BUILD_ROOT --no-version-script \
+	--standalone-lib --install-scripts=%{_bindir} --install-data=%{_datadir}
+ 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
 
 %files
 %defattr(-,root,root,-)
 %doc CHANGES.txt LICENSE.txt README.txt RELEASE.txt
 %{_bindir}/*
 %{_prefix}/lib/scons
-%{_mandir}/man*/*
-
+%{_mandir}/man?/*
 
 %changelog
+* Thu Jul 08 2010 Chen Lei <supercyper@163.com> - 2.0.0-1.final.0
+- new release 2.0.0.final.0
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
@@ -115,15 +114,3 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Jan 25 2005 Thorsten Leemhuis <fedora[AT]leemhuis[DOT]info> 0.96-4
 - Place libs in {_prefix}/lib/ and not in {libdir}; fixes x86_64 problems
 - Adjust minor bits to be in sync with python-spec-template
-
-* Wed Nov 10 2004 Matthias Saou <http://freshrpms.net/> 0.96-3
-- Bump release to provide Extras upgrade path.
-
-* Thu Aug 19 2004 Gerard Milmeister <gemi@bluewin.ch> - 0:0.96-0.fdr.1
-- New Version 0.96
-
-* Thu Apr 15 2004 Gerard Milmeister <gemi@bluewin.ch> - 0:0.95-0.fdr.1
-- New Version 0.95
-
-* Fri Nov  7 2003 Gerard Milmeister <gemi@bluewin.ch> - 0:0.93-0.fdr.1
-- First Fedora release
