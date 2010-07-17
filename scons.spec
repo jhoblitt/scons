@@ -1,4 +1,3 @@
-#%global posttag .final.0
 
 Name:		scons
 Version:	1.3.0
