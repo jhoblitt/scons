@@ -1,6 +1,9 @@
 #global posttag .final.0
 
-Name:		scons
+%{?scl:%scl_package scons}
+%{!?scl:%global pkg_name %{name}}
+
+Name:		%{?scl_prefix}scons
 Version:	2.3.4
 Release:	1%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
@@ -8,9 +11,10 @@ Group:		Development/Tools
 License:	MIT
 URL:		http://www.scons.org
 Source:		http://downloads.sourceforge.net/scons/scons-%{version}%{?posttag}.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot:	%{_tmppath}/%{pkg_name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
-BuildRequires:	python2-devel
+BuildRequires:	%{?scl_prefix}python2-devel >= 2.7
+
 
 %description
 SCons is an Open Source software construction tool--that is, a build
@@ -29,18 +33,21 @@ defined Builder and/or Scanner objects.
 
 
 %prep
-%setup -q
-sed -i 's|/usr/bin/env python|/usr/bin/python|' script/*
+%setup -q -n %{pkg_name}-%{version}
+sed -i 's|/usr/bin/env python|/opt/rh/python27/root/usr/bin/python|' script/*
 
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
-
+%{?scl:EOF}
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
+%{?scl:scl enable %{scl} - << \EOF}
 %{__python} setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES --install-lib=%{_prefix}/lib/scons --install-scripts=%{_bindir}
+%{?scl:EOF}
 mkdir -p $RPM_BUILD_ROOT%{_mandir}
 mv $RPM_BUILD_ROOT%{_prefix}/man/* $RPM_BUILD_ROOT%{_mandir}
 
