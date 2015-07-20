@@ -1,7 +1,7 @@
 #global posttag .final.0
 
 Name:		scons
-Version:	2.0.1
+Version:	2.3.4
 Release:	1%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
