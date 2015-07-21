@@ -68,6 +68,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Tue Jul 21 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-2
+- backport %%build/%%install/%%clean from f22 (josh@hoblitt.com)
+
 * Tue Jul 21 2015 Joshua Hoblitt <josh@hoblitt.com>
 - backport %%build/%%install/%%clean from f22 (josh@hoblitt.com)
 
