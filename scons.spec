@@ -64,6 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man*/*
 
 %changelog
+* Tue Jul 21 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-1
+- new package built with tito
+
 * Mon Aug 23 2010 Chen Lei <supercyper@163.com> - 2.0.1-1
 - New release 2.0.1 (#595107)
 
