@@ -5,7 +5,7 @@
 
 Name:		%{?scl_prefix}scons
 Version:	2.3.4
-Release:	1%{?posttag}%{?dist}
+Release:	2%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
 License:	MIT
@@ -39,21 +39,24 @@ sed -i 's|/usr/bin/env python|/opt/rh/python27/root/usr/bin/python|' script/*
 
 %build
 %{?scl:scl enable %{scl} - << \EOF}
-CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
+%{__python} setup.py build
 %{?scl:EOF}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %{?scl:scl enable %{scl} - << \EOF}
-%{__python} setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES --install-lib=%{_prefix}/lib/scons --install-scripts=%{_bindir}
+%{__python} setup.py install -O1 --skip-build \
+    --root=%{buildroot} \
+    --no-version-script \
+    --standalone-lib \
+    --install-scripts=%{_bindir} \
+    --install-data=%{_datadir}
 %{?scl:EOF}
-mkdir -p $RPM_BUILD_ROOT%{_mandir}
-mv $RPM_BUILD_ROOT%{_prefix}/man/* $RPM_BUILD_ROOT%{_mandir}
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 
 %files
@@ -61,9 +64,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGES.txt LICENSE.txt README.txt RELEASE.txt
 %{_bindir}/*
 %{_prefix}/lib/scons
-%{_mandir}/man*/*
+%{_mandir}/man?/*
+
 
 %changelog
+* Tue Jul 21 2015 Joshua Hoblitt <josh@hoblitt.com>
+- backport %%build/%%install/%%clean from f22 (josh@hoblitt.com)
+
 * Tue Jul 21 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-1
 - new package built with tito
 
