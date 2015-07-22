@@ -1,6 +1,9 @@
 #global posttag .final.0
 
-%{?scl:%scl_package scons}
+%global scl lsst-stack1
+
+%{?scl:%global _scl_prefix /opt/lsst}
+%{?scl:%global scl_package scons}
 %{!?scl:%global pkg_name %{name}}
 
 Name:		%{?scl_prefix}scons
@@ -13,7 +16,7 @@ URL:		http://www.scons.org
 Source:		http://downloads.sourceforge.net/scons/scons-%{version}%{?posttag}.tar.gz
 BuildRoot:	%{_tmppath}/%{pkg_name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
-BuildRequires:	%{?scl_prefix}python2-devel >= 2.7
+BuildRequires:	%{?scl:python27-}python-devel >= 2.7
 
 
 %description
