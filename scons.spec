@@ -53,6 +53,7 @@ rm -rf %{buildroot}
     --root=%{buildroot} \
     --no-version-script \
     --standalone-lib \
+    --install-purelib=%{_exec_prefix}/lib \
     --install-scripts=%{_bindir} \
     --install-data=%{_datadir}
 %{?scl:EOF}
@@ -66,7 +67,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %doc CHANGES.txt LICENSE.txt README.txt RELEASE.txt
 %{_bindir}/*
-%{_prefix}/lib/scons
+%{_exec_prefix}/lib/scons
 %{_mandir}/man?/*
 
 
