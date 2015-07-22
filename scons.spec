@@ -8,7 +8,7 @@
 
 Name:		%{?scl_prefix}scons
 Version:	2.3.4
-Release:	2%{?posttag}%{?dist}
+Release:	3%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
 License:	MIT
@@ -71,6 +71,14 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-3
+- scl fixes (josh@hoblitt.com)
+- backport %%build/%%install/%%clean from f22 (josh@hoblitt.com)
+
+* Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com>
+- scl fixes (josh@hoblitt.com)
+- backport %%build/%%install/%%clean from f22 (josh@hoblitt.com)
+
 * Tue Jul 21 2015 Joshua Hoblitt <josh@hoblitt.com>
 - backport %%build/%%install/%%clean from f22 (josh@hoblitt.com)
 
