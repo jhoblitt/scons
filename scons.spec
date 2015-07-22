@@ -17,6 +17,7 @@ Source:		http://downloads.sourceforge.net/scons/scons-%{version}%{?posttag}.tar.
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 BuildRequires:	%{?scl:python27-}python-devel >= 2.7
+BuildRequires: %{?scl_prefix}build
 
 
 %description
