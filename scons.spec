@@ -3,7 +3,7 @@
 %global scl lsst-stack1
 
 %{?scl:%global _scl_prefix /opt/lsst}
-%{?scl:%global scl_package scons}
+%{?scl:%scl_package scons}
 %{!?scl:%global pkg_name %{name}}
 
 Name:		%{?scl_prefix}scons
@@ -71,6 +71,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-3
+- new package built with tito
+
 * Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-3
 - scl fixes (josh@hoblitt.com)
 - backport %%build/%%install/%%clean from f22 (josh@hoblitt.com)
