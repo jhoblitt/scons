@@ -8,7 +8,7 @@
 
 Name:		%{?scl_prefix}scons
 Version:	2.3.4
-Release:	4%{?posttag}%{?dist}
+Release:	5%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
 License:	MIT
@@ -73,6 +73,18 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-5
+- add source tarball (josh@hoblitt.com)
+- require scl -build package (josh@hoblitt.com)
+- add all lsst-stack1 required scl repos (josh@hoblitt.com)
+- fix "libdir" path (josh@hoblitt.com)
+
+* Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com>
+- add source tarball (josh@hoblitt.com)
+- require scl -build package (josh@hoblitt.com)
+- add all lsst-stack1 required scl repos (josh@hoblitt.com)
+- fix "libdir" path (josh@hoblitt.com)
+
 * Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-4
 - fix BuildRoot (josh@hoblitt.com)
 
