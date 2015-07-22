@@ -7,8 +7,8 @@
 %{!?scl:%global pkg_name %{name}}
 
 Name:		%{?scl_prefix}scons
-Version:	2.3.4
-Release:	5%{?posttag}%{?dist}
+Version:	2.3.5
+Release:	1%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
 License:	MIT
@@ -73,6 +73,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.5-1
+- add scons-2.3.5.tar.gz (josh@hoblitt.com)
+
 * Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.4-5
 - add source tarball (josh@hoblitt.com)
 - require scl -build package (josh@hoblitt.com)
