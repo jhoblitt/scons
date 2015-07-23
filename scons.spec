@@ -8,7 +8,7 @@
 
 Name:		%{?scl_prefix}scons
 Version:	2.3.5
-Release:	1%{?posttag}%{?dist}
+Release:	2%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
 License:	MIT
@@ -73,6 +73,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jul 23 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.5-2
+- 
+
 * Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.5-1
 - add scons-2.3.5.tar.gz (josh@hoblitt.com)
 
