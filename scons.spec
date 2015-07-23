@@ -8,7 +8,7 @@
 
 Name:		%{?scl_prefix}scons
 Version:	2.3.5
-Release:	2%{?posttag}%{?dist}
+Release:	3%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
 License:	MIT
@@ -16,8 +16,9 @@ URL:		http://www.scons.org
 Source:		http://downloads.sourceforge.net/scons/scons-%{version}%{?posttag}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
-BuildRequires:	%{?scl:python27-}python-devel >= 2.7
-BuildRequires: %{?scl_prefix}build
+BuildRequires:	%{?scl_prefix_python}python-devel >= 2.7
+%{?scl:BuildRequires: %{scl}-build %{scl}-runtime}
+%{?scl:Requires: %{scl}-runtime}
 
 
 %description
@@ -73,6 +74,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jul 23 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.5-3
+- 
+
 * Thu Jul 23 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.5-2
 - 
 
