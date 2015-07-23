@@ -7,7 +7,7 @@
 %{!?scl:%global pkg_name %{name}}
 
 Name:		%{?scl_prefix}scons
-Version:	2.3.5
+Version:	2.3.6
 Release:	1%{?posttag}%{?dist}
 Summary:	An Open Source software construction tool
 Group:		Development/Tools
@@ -17,7 +17,8 @@ Source:		http://downloads.sourceforge.net/scons/scons-%{version}%{?posttag}.tar.
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 BuildRequires:	%{?scl:python27-}python-devel >= 2.7
-BuildRequires: %{?scl_prefix}build
+%{?scl:BuildRequires: %{scl}-build %{scl}-runtime}
+%{?scl:Requires: %{scl}-runtime}
 
 
 %description
@@ -73,6 +74,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jul 23 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.6-1
+- 
+
 * Wed Jul 22 2015 Joshua Hoblitt <josh@hoblitt.com> 2.3.5-1
 - add scons-2.3.5.tar.gz (josh@hoblitt.com)
 
